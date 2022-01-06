@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
-<body>
-    <h1>Here are the <span data-th-text="${num}"/> number(s) you requested:</h1>
-    <table>
-        <tr th:each="value, status :${gen}">
-            <td th:utext="${value}"></td>
-        </tr>
-    </table>
-</body>
+    <head>
+        <link rel="stylesheet" th:href="@{/styles/result.css}">
+    </head>
+    <body>
+        <h1>Here are the <span data-th-text="${num}"/> number(s) you requested:</h1>
+        <div>
+            <img th:src="@{'/number_images/number' + ${value} + '.jpg'}" 
+                th:each="value: ${gen}"/>
+        </div>
+    </body>
+</html>

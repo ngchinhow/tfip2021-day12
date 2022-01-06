@@ -1,8 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random Number Generator</title>
+    </head>
     <body>
         <h1>How many numbers do you wish to generate?</h1>
-        <p>The current time is <span data-th-text="${currTime}"></span></p>
         <form action="#" th:action="@{/random}" th:object="${rn}" method="get">
             <input type="text" th:field="*{num}"/>
             <input type="submit" value="Generate"/>

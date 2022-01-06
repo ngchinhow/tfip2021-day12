@@ -1,0 +1,11 @@
+img {
+    object-fit: contain;
+    border: solid 1px #CCC;
+    width: 200px;
+    height: auto;
+}
+
+div {
+    display: flex;
+    flex-wrap: wrap;
+}
