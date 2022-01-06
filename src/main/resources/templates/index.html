@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+    <body>
+        <h1>How many numbers do you wish to generate?</h1>
+        <p>The current time is <span data-th-text="${currTime}"></span></p>
+        <form action="#" th:action="@{/random}" th:object="${rn}" method="get">
+            <input type="text" th:field="*{num}"/>
+            <input type="submit" value="Generate"/>
+        </form>
+    </body>
+</html>
