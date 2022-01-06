@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1>How many numbers do you wish to generate?</h1>
+        <h2>Choose a number between 1 and 30</h2>
         <form action="#" th:action="@{/random}" th:object="${rn}" method="get">
             <input type="text" th:field="*{num}"/>
             <input type="submit" value="Generate"/>

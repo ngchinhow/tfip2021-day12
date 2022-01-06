@@ -1,8 +1,10 @@
 package com.tfip2021.module2;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
+
+import java.util.Arrays;
 
 // import org.slf4j.Logger;
 // import org.slf4j.LoggerFactory;
@@ -24,20 +26,23 @@ public class RandomResource {
         if (rn.getNum() < RANGE_MIN || rn.getNum() >= RANGE_MAX)
             return "error";
         
-        Integer[] generatedNum = generateRandomNumbers(rn.getNum());
+        int[] generatedNum = generateRandomNumbers(rn.getNum());
         System.out.println(generatedNum.toString());
         model.addAttribute("num", rn.getNum());
         model.addAttribute("gen", generatedNum);
         return "result";
     }
 
-    public Integer[] generateRandomNumbers(int length) {
-        Set<Integer> generatedNum = new TreeSet<Integer> ();
-        while (generatedNum.size() < length) {
-            generatedNum.add(ThreadLocalRandom.current().nextInt(
-                RANGE_MIN, RANGE_MAX
-            ));
+    public int[] generateRandomNumbers(int length) {
+        Random rnd = ThreadLocalRandom.current();
+        int[] choices = IntStream.range(RANGE_MIN, RANGE_MAX).toArray();
+        for (int i = choices.length - 1; i > 0; i--) {
+            int index = rnd.nextInt(i + 1);
+            // Simple swap
+            int a = choices[index];
+            choices[index] = choices[i];
+            choices[i] = a;
         }
-        return generatedNum.toArray(new Integer[length]);
+        return Arrays.copyOfRange(choices, 0, length);
     }
 }
